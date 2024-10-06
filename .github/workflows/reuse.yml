@@ -1,5 +1,5 @@
 name: re use
-on: workflow_dispatch
+on: workflow_call
 jobs:
   echo:
     strategy:
