@@ -56,8 +56,11 @@ jobs:
         with:
           name: test-report
           path: test.json
-  build:
+  reuse:
     needs: test
+    uses: ./.github/workflows/reuse.yml
+  build:
+    needs: reuse
     runs-on: ubuntu-latest
     steps:
       - name: Get code
