@@ -1,16 +1,19 @@
 name: re use
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+      os:
+        required: true
+        type: string
 jobs:
   echo:
     strategy:
       matrix:
-        node-version: [14, 18]
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        include:
-          - node-version: 15
-            os: ubuntu-latest
-          - node-version: 16
-            os: ubuntu-latest
+        node-version: ${{ fromJSON(inputs.node-version) }}
+        os: ${{ fromJSON(inputs.os) }}
     runs-on: ${{ matrix.os }}
     steps:
       - name: Get code

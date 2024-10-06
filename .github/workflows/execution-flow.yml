@@ -59,6 +59,9 @@ jobs:
   reuse:
     needs: test
     uses: ./.github/workflows/reuse.yml
+    with:
+      node-version: '["14", "16", "18"]' # Passa i valori come una stringa JSON
+      os: '["ubuntu-latest", "windows-latest"]' # Anche qui, i sistemi operativi come stringa JSON
   build:
     needs: reuse
     runs-on: ubuntu-latest
